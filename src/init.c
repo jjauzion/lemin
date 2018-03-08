@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/08 19:22:58 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/03/08 16:41:11 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		main(void)
+t_vertex	*init_vertex(int size)
 {
 	t_vertex	*vertex;
-	t_clist		*adj_list;
 	int			i;
 
-	if (parse(&vertex, &adj_list) || check_name(vertex))
-	{
-		ft_printf("ERROR\n");
-		return (1);
-	}
+	if (!(vertex = (t_vertex*)malloc(sizeof(t_vertex) * (size + 1))))
+		return (NULL);
 	i = -1;
-	while (++i <= vertex[0].x)
+	while (++i <= size)
 	{
-		ft_printf("vertex[%d].name = |%s|\n", i, vertex[i].name);
-		ft_printf("vertex[%d].x = |%d|\n", i, vertex[i].x);
-		ft_printf("vertex[%d].y = |%d|\n", i, vertex[i].y);
+		vertex[i].name = NULL;
+		vertex[i].x = 0;
+		vertex[i].y = 0;
 	}
-
-	return (0);
+	vertex[0].name = ft_strdup("nb_of_vertex");
+	return (vertex);
 }

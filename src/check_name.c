@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_name.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/08 19:22:58 by jjauzion         ###   ########.fr       */
+/*   Created: 2018/03/08 19:13:54 by jjauzion          #+#    #+#             */
+/*   Updated: 2018/03/08 19:21:38 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		main(void)
+int		check_name(t_vertex *vertex)
 {
-	t_vertex	*vertex;
-	t_clist		*adj_list;
-	int			i;
+	int		i;
+	int		j;
+	char	*tmp;
 
-	if (parse(&vertex, &adj_list) || check_name(vertex))
-	{
-		ft_printf("ERROR\n");
-		return (1);
-	}
 	i = -1;
 	while (++i <= vertex[0].x)
 	{
-		ft_printf("vertex[%d].name = |%s|\n", i, vertex[i].name);
-		ft_printf("vertex[%d].x = |%d|\n", i, vertex[i].x);
-		ft_printf("vertex[%d].y = |%d|\n", i, vertex[i].y);
+		tmp = vertex[i].name;
+		if (ft_strchr(tmp, '-') || tmp[0] == 'L')
+			return (1);
+		j = i;
+		while (++j <= vertex[0].x)
+			if (ft_strequ(tmp, vertex[j].name))
+				return (1);
 	}
-
 	return (0);
 }

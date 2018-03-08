@@ -6,19 +6,22 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/08 11:26:20 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/08 19:22:32 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 .PHONY: all, clean, fclean, re, LIB
 
 SRC_NAME1 = main.c \
+			init.c \
+			parse.c \
+			check_name.c
 
 SRC_NAME2 = 
 
 SRC_PATH1 = src/
 
-SRC_PATH2 = src/
+SRC_PATH2 =
 
 OBJ_PATH1 = .obj/
 
@@ -26,18 +29,17 @@ LIB_PATH = libft/
 
 LDLIBS = libftprintf.a
 
-EXT_LIB = -L /usr/local/lib/ -lmlx \
-		  -framework OpenGL -framework AppKit
+EXT_LIB =
 
 INC_PATH1 = libft/
 
 INC_PATH2 = includes/
 
-INC_NAME1 = ft_printf.h
+INC_NAME1 = libft.h
 
-INC_NAME2 = header.h
+INC_NAME2 = lemin.h
 
-NAME = fdf
+NAME = lem_in
 
 CC = gcc
 
