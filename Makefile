@@ -6,7 +6,7 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/08 19:22:32 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/09 15:25:17 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,11 @@
 SRC_NAME1 = main.c \
 			init.c \
 			parse.c \
-			check_name.c
+			check_name.c \
+			add_link.c \
+			add_vertex.c \
+			free.c \
+			list_fct.c
 
 SRC_NAME2 = 
 

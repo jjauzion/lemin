@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/08 19:44:35 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:28:59 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,37 @@
 # include "libft.h"
 # define START 1
 # define END 2
+# define LINK_DEF 3
 # define VERTEX_DEF_NB 1000
 
 typedef struct 				s_vertex
 {
-	char					*name;
-	int						x;
-	int						y;
+	char			*name;
+	int				x;
+	int				y;
 }							t_vertex;
 
-typedef struct				s_connex_list
+typedef struct				s_clist
 {
-	int						nb;
-	struct s_connex_list	*next;	
+	int				nb;
+	struct s_clist	*next;	
 }							t_clist;
 
-t_vertex					*init_vertex(int size);
-int							parse(t_vertex **vertex, t_clist **adj_list);
-int							check_name(t_vertex *vertex);
+typedef struct				s_paths
+{
+	int				nb_of;
+	int				**tab;
+}							t_paths;
+
+t_vertex			*init_vertex(int size);
+t_clist				**init_adj_list(int size);
+void				free_word(char ***word);
+int					parse(t_vertex **vertex, t_clist ***adj_list);
+int					add_vertex(char **word, t_vertex **vertex, int option);
+int					add_link(char *line, t_vertex *vertex, t_clist ***adj_list);
+int					check_name(t_vertex *vertex);
+t_clist				*new_elm(int data);
+int					add2list(t_clist **list, int data);
+void				print_adj_list(t_clist **list, int size);
 
 #endif
