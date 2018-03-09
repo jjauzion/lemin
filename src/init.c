@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 15:42:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:54:58 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,30 @@ t_clist		**init_adj_list(int size)
 	while (++i < size)
 		adj_list[i] = NULL;
 	return (adj_list);
+}
+
+int			**init_path_data_tab(int size)
+{
+	int		**path_data;
+	int		i;
+
+	if (!(path_data = (int**)malloc(sizeof(int*) * 4)))
+		return (NULL);
+	if (!(path_data[0] = (int*)malloc(sizeof(int) * size)))
+		return (NULL);
+	if (!(path_data[1] = (int*)malloc(sizeof(int) * size)))
+		return (NULL);
+	if (!(path_data[2] = (int*)malloc(sizeof(int) * size)))
+		return (NULL);
+	if (!(path_data[3] = (int*)malloc(sizeof(int) * size)))
+		return (NULL);
+	i = -1;
+	while (++i < size)
+	{
+		path_data[0][i] = i;
+		path_data[1][i] = -1;
+		path_data[2][i] = 0;
+		path_data[3][i] = -1;
+	}
+	return (path_data);
 }

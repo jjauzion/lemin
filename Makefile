@@ -6,7 +6,7 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/09 15:25:17 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/09 19:15:28 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC_NAME1 = main.c \
 			add_link.c \
 			add_vertex.c \
 			free.c \
-			list_fct.c
+			list_fct.c \
+			path_finding.c
 
 SRC_NAME2 = 
 
