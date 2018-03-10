@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 15:22:48 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 10:34:56 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 		if (option < 0)
 			return (1);
 	}
+	ft_strdel(&line);
 	if ((*vertex)[1].name == NULL || (*vertex)[2].name == NULL)
 		return (1);
 	return (0);

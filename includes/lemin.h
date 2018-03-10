@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 19:15:54 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 10:26:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ t_vertex			*init_vertex(int size);
 t_clist				**init_adj_list(int size);
 int					**init_path_data_tab(int size);
 void				free_word(char ***word);
+void				free_vertex(t_vertex **vertex);
+void				free_adj_list(t_clist ***adj_list, int size);
 int					parse(t_vertex **vertex, t_clist ***adj_list);
 int					add_vertex(char **word, t_vertex **vertex, int option);
 int					add_link(char *line, t_vertex *vertex, t_clist ***adj_list);
