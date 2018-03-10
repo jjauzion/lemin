@@ -1,11 +1,15 @@
 2
 ##start
-1 -2 1
+A -2 1
 ##end
-2 3 4
+D 3 4
+B 1 1
+C 2 2
+E 3 3
 #com inutile
-2-1
+A-B
 #autre com inutile
-2-1
-1-2
-2-1
+B-C
+C-D
+A-E
+E-D

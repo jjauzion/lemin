@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 15:08:52 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 12:32:23 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,27 +32,4 @@ int			add2list(t_clist **list, int data)
 	elm->next = *list;
 	*list = elm;
 	return (0);
-}
-
-void		print_adj_list(t_clist **list, int size)
-{
-	int		i;
-	t_clist	*ptr;
-
-	if (!list)
-		return ;
-	i = -1;
-	while (++i < size)
-	{
-		ft_printf("%3d: |", i);
-		ptr = list[i];
-		while (ptr)
-		{
-			ft_printf("%d", ptr->nb);
-			if (ptr->next)
-				ft_printf("-");
-			ptr = ptr->next;
-		}
-		ft_printf("|\n");
-	}
 }

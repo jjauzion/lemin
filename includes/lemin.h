@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 10:26:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 13:10:14 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,6 @@ typedef struct				s_clist
 	struct s_clist	*next;	
 }							t_clist;
 
-typedef struct				s_paths
-{
-	int				nb_of;
-	int				**tab;
-}							t_paths;
-
 t_vertex			*init_vertex(int size);
 t_clist				**init_adj_list(int size);
 int					**init_path_data_tab(int size);
@@ -50,7 +44,9 @@ int					add_link(char *line, t_vertex *vertex, t_clist ***adj_list);
 int					check_name(t_vertex *vertex);
 t_clist				*new_elm(int data);
 int					add2list(t_clist **list, int data);
-int					path_finding(t_paths *path, t_vertex *vertex, t_clist **adj_list);
+int					path_finding(t_clist ***path, t_vertex *vertex, t_clist **adj_list);
+void				djikstra(int **path_data, t_vertex *v, t_clist **adj_list);
 void				print_adj_list(t_clist **list, int size);
+void				print_path_data(int **path_data, int size);
 
 #endif

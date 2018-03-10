@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 18:54:58 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 11:44:28 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int			**init_path_data_tab(int size)
 	int		**path_data;
 	int		i;
 
-	if (!(path_data = (int**)malloc(sizeof(int*) * 4)))
+	if (!(path_data = (int**)malloc(sizeof(int*) * 3)))
 		return (NULL);
 	if (!(path_data[0] = (int*)malloc(sizeof(int) * size)))
 		return (NULL);
@@ -59,15 +59,13 @@ int			**init_path_data_tab(int size)
 		return (NULL);
 	if (!(path_data[2] = (int*)malloc(sizeof(int) * size)))
 		return (NULL);
-	if (!(path_data[3] = (int*)malloc(sizeof(int) * size)))
-		return (NULL);
 	i = -1;
 	while (++i < size)
 	{
-		path_data[0][i] = i;
-		path_data[1][i] = -1;
-		path_data[2][i] = 0;
-		path_data[3][i] = -1;
+		path_data[0][i] = INT_MAX;
+		path_data[1][i] = 0;
+		path_data[2][i] = -1;
 	}
+	path_data[0][0] = 0;
 	return (path_data);
 }
