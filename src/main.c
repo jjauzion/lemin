@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 13:27:49 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 19:22:02 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		main(void)
 	t_vertex	*vertex;
 	t_clist		**adj_list;
 	int			i;
-	t_clist		**path;
+	int			**path;
+	int			nb_of_path;
 
 	if (parse(&vertex, &adj_list) || vertex[0].y < 0)
 	{
@@ -46,12 +47,18 @@ while (++i <= vertex[0].x)
 	ft_printf("vertex[%d].y = |%d|\n", i, vertex[i].y);
 }
 print_adj_list(adj_list, vertex[0].x);
-	if (path_finding(&path, vertex, adj_list))
+	if (!(path = (int**)malloc(sizeof(int*) * (PATH_DEF_NB + 1))))
 		return (1);
-	print_adj_list(path, 1);
+	if ((nb_of_path = path_finding(path, vertex, adj_list)) <= 0)
+	{
+		ft_printf("No path found :( poor ants die trapped in their maze...\n");
+		return (1);
+	}
+	print_path(path);
 
 //	run_ants_run();
 	free_adj_list(&adj_list, vertex[0].x);
+	free_int_matrix(&path, nb_of_path);
 	free_vertex(&vertex);
 	return (0);
 }

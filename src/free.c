@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:20:45 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 15:01:00 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 19:19:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,27 +38,19 @@ void		free_vertex(t_vertex **vertex)
 void		free_adj_list(t_clist ***adj_list, int size)
 {
 	int		i;
-	t_clist	*ptr;
 
 	i = -1;
 	while (++i < size)
-	{
-		while ((*adj_list)[i])
-		{
-			ptr = (*adj_list)[i]->next;
-			free((*adj_list)[i]);
-			(*adj_list)[i] = ptr;
-		}
-	}
+		free_list(&(*adj_list)[i]);
 	free(*adj_list);
 }
 
-void		free_path_data(int ***path_data)
+void		free_int_matrix(int ***matrix, int size)
 {
 	int	i;
 
 	i = -1;
-	while (++i < 3)
-		free((*path_data)[i]);
-	free(*path_data);
+	while (++i < size)
+		free((*matrix)[i]);
+	free(*matrix);
 }

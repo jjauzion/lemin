@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:24:14 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/09 15:40:28 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 17:02:37 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ int			add_link(char *line, t_vertex *vertex, t_clist ***adj_list)
 		if (add2list(&(*adj_list)[vertex1], vertex2) ||	add2list(&(*adj_list)[vertex2], vertex1))
 			return (-1);
 	free_word(&word);
-	return (LINK_DEF);
+	return (OPT_LINK);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:31:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 12:45:48 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 16:57:58 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,24 @@ void		print_path_data(int **path_data, int size)
 	i = -1;
 	while (++i < size)
 		ft_printf("%3d: %11d | %d | %3d |\n", i, path_data[0][i], path_data[1][i], path_data[2][i]);
+}
+
+void		print_path(int **path)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (path[++i])
+	{
+		ft_printf("Path n%d: |", i);
+		j = -1;
+		while (path[i][++j] >= 0)
+		{
+			ft_printf("%d", path[i][j]);
+			if (path[i][j] != 1)
+				ft_printf("-");
+		}
+		ft_printf("|\n");
+	}
 }

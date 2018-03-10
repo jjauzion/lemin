@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 11:28:40 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 13:20:32 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 18:20:55 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static int		get_closest_node(int **path_data, int size)
 	int	min;
 	int	index;
 
-	index = 0;
+	index = -1;
 	min = INT_MAX;
-	i = 0;
+	i = -1;
 	while (++i < size)
 	{
 		if (path_data[0][i] < min && path_data[1][i] == 0)
@@ -32,18 +32,20 @@ static int		get_closest_node(int **path_data, int size)
 	return (index);
 }
 
-void			djikstra(int **path_data, t_vertex *v, t_clist **adj_list)
+int				djikstra(int **path_data, t_vertex *v, t_clist **adj_list)
 {
 	int		current_node;
 	t_clist	*ptr;
 	int		next;
 
-print_path_data(path_data, v[0].x);
-//sleep(3);
 	current_node = get_closest_node(path_data, v[0].x);
-	path_data[1][current_node] = 1;
+//print_path_data(path_data, v[0].x);
+//ft_printf("Current_node = %d\n\n", current_node);
 	if (current_node == 1)
-		return ;
+		return (1);
+	if (current_node < 0)
+		return (0);
+	path_data[1][current_node] = 1;
 	ptr = adj_list[current_node];
 	while (ptr)
 	{
@@ -58,5 +60,5 @@ print_path_data(path_data, v[0].x);
 		}
 		ptr = ptr->next;
 	}
-	djikstra(path_data, v, adj_list);
+	return (djikstra(path_data, v, adj_list));
 }
