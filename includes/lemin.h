@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:20:52 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 19:32:35 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct 				s_vertex
 	char			*name;
 	int				x;
 	int				y;
+	int				ant;
 }							t_vertex;
 
 typedef struct				s_clist

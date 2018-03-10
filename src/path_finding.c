@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:17:03 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:20:19 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/10 19:59:47 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,20 @@ static int			add_path(int **path, int nb_of_path, int **path_data)
 {
 	int	i;
 	int	preceding;
-/*
-	if (nb_of_path > PATH_DEF_NB)
-		realloc_path(path, nb_of_path);
-*/
+
+/*	if (nb_of_path > PATH_DEF_NB)
+		realloc_path(path, nb_of_path);*/
 	if (!(path[nb_of_path - 1] = (int*)malloc(sizeof(int) * (path_data[0][1] + 2))))
 		return (1);
 	i = path_data[0][1];
-	path[nb_of_path - 1][i + 1] = -1;
-	path[nb_of_path - 1][i] = 1;
+	path[nb_of_path - 1][0] = i;
+	path[nb_of_path - 1][i + 1] = 1;
 	preceding = path_data[2][1];
-	while (--i >= 0)
+	while (i > 0)
 	{
 		path[nb_of_path - 1][i] = preceding;
 		preceding = path_data[2][preceding];
+		i--;
 	}
 	path[nb_of_path] = NULL;
 	return (0);
@@ -43,7 +43,7 @@ static void	remove_path_from_graph(int *path, t_clist **adj_list, int nb_vertex)
 	i = -1;
 	while (++i < nb_vertex)
 	{
-		j = 0;
+		j = 1;
 		while (path[++j] != 1)
 		{
 			if (i == path[j])
