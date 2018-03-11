@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:17:03 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:59:47 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 17:05:37 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ static void	remove_path_from_graph(int *path, t_clist **adj_list, int nb_vertex)
 	int	i;
 	int	j;
 
+	if (path[2] == 1)
+	{
+		remove_elm(&adj_list[0], 1);
+		return ;
+	}
 	i = -1;
 	while (++i < nb_vertex)
 	{
