@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:31:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 16:03:01 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 17:35:36 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void		print_path_data(int **path_data, int size)
 		ft_printf("%3d: %11d | %d | %3d |\n", i, path_data[0][i], path_data[1][i], path_data[2][i]);
 }
 
-void		print_path(int **path)
+void		print_path(int **path, t_vertex *vertex)
 {
 	int	i;
 	int	j;
@@ -103,7 +103,7 @@ void		print_path(int **path)
 		j = 0;
 		while (++j <= path[i][0] + 1)
 		{
-			ft_printf("%d", path[i][j]);
+			ft_printf("%s", vertex[path[i][j] + 1].name);
 			if (path[i][j] != 1)
 				ft_printf("-");
 		}
