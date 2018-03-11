@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 11:44:28 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 14:27:33 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_vertex	*init_vertex(int size)
 		vertex[i].name = NULL;
 		vertex[i].x = 0;
 		vertex[i].y = 0;
+		vertex[i].ant = 0;
 	}
 	vertex[0].name = ft_strdup("vertex[0].x = nb_of_vertex ; .y = nb_of_ants");
 	vertex[0].y = -1;

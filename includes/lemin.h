@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:32:35 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 15:48:45 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ void				free_list(t_clist **list);
 void				remove_elm(t_clist **list, int data);
 int					path_finding(int **path, t_vertex *vertex, t_clist **adj_list);
 int					djikstra(int **path_data, t_vertex *v, t_clist **adj_list);
+void				run_ants_run(int **path, int nb_of_path, t_vertex *vertex);
 void				print_adj_list(t_clist **list, int size);
 void				print_path_data(int **path_data, int size);
 void				print_path(int **path);
+void				print_maze(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 17:03:37 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:02:50 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,17 @@
 static int		read_cmd(char *line, int option)
 {
 	if (ft_strequ(line, "##start"))
+	{
+		print_maze("##start");
+		//ft_printf("##start\n");
 		option = OPT_START;
+	}
 	else if (ft_strequ(line, "##end"))
+	{
+		print_maze("##end");
+		//ft_printf("##end\n");
 		option = OPT_END;
+	}
 	return (option);
 }
 
@@ -77,7 +85,11 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 			if (line[0] == '#' && line[1] == '#' && option != OPT_LINK)
 				option = read_cmd(line, option);
 			else
+			{
 				option = parse_line(line, vertex, adj_list, option);
+				//ft_printf("%s\n", line);
+				print_maze(line);
+			}
 		}
 		ft_strdel(&line);
 		if (option < 0)

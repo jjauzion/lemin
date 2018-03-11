@@ -6,11 +6,57 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:31:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:59:21 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:03:01 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+static char	*join(char const *s1, char const *s2)
+{
+	char	*ret;
+	size_t	len1;
+	size_t	len2;
+	size_t	i;
+
+	if (!s2)
+		return (NULL);
+	if (!s1)
+		len1 = 0;
+	else
+		len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (!(ret = (char *)malloc(sizeof(char) * (len1 + len2 + 2))))
+		return (NULL);
+	i = 0;
+	while (i < (len1 + len2))
+	{
+		if (i < len1)
+			ret[i] = s1[i];
+		else
+			ret[i] = s2[i - len1];
+		i++;
+	}
+	ret[i] = '\n';
+	ret[i + 1] = '\0';
+	return (ret);
+}
+
+void		print_maze(char *str)
+{
+	static char		*buff;
+	char			*tmp;
+
+	if (!str)
+	{
+		ft_printf("%s\n", buff);
+		free(buff);
+		return ;
+	}
+	tmp = buff;
+	buff = join(buff, str);
+	free(tmp);
+}
 
 void		print_adj_list(t_clist **list, int size)
 {

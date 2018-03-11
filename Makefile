@@ -6,7 +6,7 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/10 12:32:42 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/11 15:06:24 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRC_NAME1 = main.c \
 			list_fct.c \
 			path_finding.c \
 			djikstra.c \
-			print.c
+			print.c \
+			run_ants_run.c
 
 SRC_NAME2 = 
 
@@ -46,7 +47,7 @@ INC_NAME1 = libft.h
 
 INC_NAME2 = lemin.h
 
-NAME = lem_in
+NAME = lem-in
 
 CC = gcc
 

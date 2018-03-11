@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:24:14 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 17:02:37 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/11 16:47:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int			add_link(char *line, t_vertex *vertex, t_clist ***adj_list)
 	}
 	word = ft_strsplit(line, '-');
 	if (!(*adj_list) || !word || !word[0] || !word[1] || word[2] != 0)
+	{
+		free_word(&word);
 		return (-1);
+	}
 	i = 0;
 	vertex1 = -1;
 	vertex2 = -1;
@@ -54,7 +57,10 @@ int			add_link(char *line, t_vertex *vertex, t_clist ***adj_list)
 			vertex2 = i - 1;
 	}
 	if (vertex1 < 0 || vertex2 < 0)
+	{
+		free_word(&word);
 		return (-1);
+	}
 	if (link_is_new(*adj_list, vertex1, vertex2))
 		if (add2list(&(*adj_list)[vertex1], vertex2) ||	add2list(&(*adj_list)[vertex2], vertex1))
 			return (-1);
