@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:17:45 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 17:04:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 14:59:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int		add_vertex(char **word, t_vertex **vertex, int option)
 	x = ft_atoim(word[1]);
 	y = ft_atoim(word[2]);
 	if (x > INT_MAX || x < INT_MIN || y > INT_MAX || y < INT_MIN)
+		return (-1);
+	if (check_name(*vertex, word[0]))
 		return (-1);
 	if (option == OPT_START)
 		i = 1;

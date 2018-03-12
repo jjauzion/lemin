@@ -6,28 +6,23 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 19:13:54 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/08 19:21:38 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:03:39 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		check_name(t_vertex *vertex)
+int		check_name(t_vertex *vertex, char *name)
 {
 	int		i;
-	int		j;
-	char	*tmp;
 
+	if (ft_strchr(name, '-') || name[0] == 'L')
+		return (1);
 	i = -1;
-	while (++i <= vertex[0].x)
+	while (vertex[++i].name)
 	{
-		tmp = vertex[i].name;
-		if (ft_strchr(tmp, '-') || tmp[0] == 'L')
+		if (ft_strequ(name, vertex[i].name))
 			return (1);
-		j = i;
-		while (++j <= vertex[0].x)
-			if (ft_strequ(tmp, vertex[j].name))
-				return (1);
 	}
 	return (0);
 }

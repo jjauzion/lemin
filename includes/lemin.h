@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 17:36:02 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 14:59:23 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void				free_int_matrix(int ***matrix, int size);
 int					parse(t_vertex **vertex, t_clist ***adj_list);
 int					add_vertex(char **word, t_vertex **vertex, int option);
 int					add_link(char *line, t_vertex *vertex, t_clist ***adj_list);
-int					check_name(t_vertex *vertex);
+int					check_name(t_vertex *vertex, char *name);
 t_clist				*new_elm(int data);
 int					add2list(t_clist **list, int data);
 void				free_list(t_clist **list);

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 16:02:50 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:15:04 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static int		read_cmd(char *line, int option)
 	if (ft_strequ(line, "##start"))
 	{
 		print_maze("##start");
-		//ft_printf("##start\n");
 		option = OPT_START;
 	}
 	else if (ft_strequ(line, "##end"))
 	{
 		print_maze("##end");
-		//ft_printf("##end\n");
 		option = OPT_END;
 	}
 	return (option);
@@ -75,6 +73,7 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 	char	*line;
 	int		option;
 
+	*adj_list = NULL;
 	if (!(*vertex = init_vertex(VERTEX_DEF_NB)))
 		return (1);
 	option = 0;
@@ -87,7 +86,6 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 			else
 			{
 				option = parse_line(line, vertex, adj_list, option);
-				//ft_printf("%s\n", line);
 				print_maze(line);
 			}
 		}
@@ -96,7 +94,5 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 			return (1);
 	}
 	ft_strdel(&line);
-	if ((*vertex)[1].name == NULL || (*vertex)[2].name == NULL)
-		return (1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:24:14 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 16:47:30 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:04:03 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int			add_link(char *line, t_vertex *vertex, t_clist ***adj_list)
 
 	if (init)
 	{
-		check_name(vertex);
 		*adj_list = init_adj_list(vertex[0].x);
 		init = 0;
 	}

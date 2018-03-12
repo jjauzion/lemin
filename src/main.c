@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 17:46:41 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/12 15:16:12 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,9 @@ int		main(void)
 	int			**path;
 	int			nb_of_path;
 
-	if (parse(&vertex, &adj_list) || vertex[0].y < 0)
+	parse(&vertex, &adj_list);
+	if (vertex[0].y < 0 || vertex[1].name == NULL || vertex[2].name == NULL || !adj_list)
 	{
-		free_adj_list(&adj_list, vertex[0].x);
-		free_vertex(&vertex);
 		ft_printf("ERROR\n");
 		return (1);
 	}
@@ -57,7 +56,7 @@ int		main(void)
 	print_maze(NULL);
 	if ((nb_of_path = path_finding(path, vertex, adj_list)) <= 0)
 	{
-		ft_printf("No path found :( poor ants die trapped in their maze...\n");
+		ft_printf("ERROR: No path found\n");
 		return (1);
 	}
 	run_ants_run(path, nb_of_path, vertex);
