@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:20:45 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 19:19:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 18:46:08 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ void		free_int_matrix(int ***matrix, int size)
 	while (++i < size)
 		free((*matrix)[i]);
 	free(*matrix);
+}
+
+void		free_solution(t_sol **sol)
+{
+	int		i;
+
+	i = -1;
+	while ((*sol)[++i].nb_of_path >= 0)
+		free_int_matrix(&(*sol)[i].path, (*sol)[i].nb_of_path);
+	free(*sol);
 }

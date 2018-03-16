@@ -6,7 +6,7 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/11 15:06:24 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/16 13:13:09 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_NAME1 = main.c \
 			path_finding.c \
 			djikstra.c \
 			print.c \
-			run_ants_run.c
+			run_ants_run.c \
+			adj_list_mgmt.c
 
 SRC_NAME2 = 
 

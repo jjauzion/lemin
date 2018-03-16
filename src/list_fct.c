@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 12:48:58 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 18:14:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 18:21:16 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,14 @@ void		remove_elm(t_clist **list, int data)
 
 	if (!list || !(*list))
 		return ;
-	if ((*list)->nb == data)
-	{
-		ptr1 = (*list)->next;
-		free(*list);
-		*list = ptr1;
-		return ;
-	}
 	ptr1 = *list;
 	ptr2 = ptr1->next;
+	if ((*list)->nb == data)
+	{
+		free(*list);
+		*list = ptr2;
+		return ;
+	}
 	while (ptr2 && ptr2->nb != data)
 	{
 		ptr1 = ptr2;
@@ -73,4 +72,31 @@ void		free_list(t_clist **list)
 		free(*list);
 		*list = ptr;
 	}
+}
+
+int			get_nb_elm(t_clist *list)
+{
+	int		count;
+
+	count = 0;
+	while (list)
+	{
+		list = list->next;
+		count++;
+	}
+	return (count);
+}
+
+t_clist		*copy_list(t_clist *list)
+{
+	t_clist	*copy;
+
+	copy = NULL;
+	while (list)
+	{
+		if (add2list(&copy, list->nb))
+			return (NULL);
+		list = list->next;
+	}
+	return (copy);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 14:27:33 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 12:52:40 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,21 @@ int			**init_path_data_tab(int size)
 	}
 	path_data[0][0] = 0;
 	return (path_data);
+}
+
+t_sol		*init_solution(int size)
+{
+	t_sol	*solution;
+
+	if (!(solution = (t_sol*)malloc(sizeof(t_sol) * (size + 1))))
+		return (NULL);
+	solution[size].path = NULL;
+	solution[size].nb_of_path = -1;
+	while (--size >= 0)
+	{
+		if (!(solution[size].path = (int**)malloc(sizeof(int*) * (PATH_DEF_NB + 1))))
+			return (NULL);
+		solution[size].nb_of_path = 0;
+	}
+	return (solution);
 }

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 11:28:40 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/10 18:20:55 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 19:58:41 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int				djikstra(int **path_data, t_vertex *v, t_clist **adj_list)
 	int		next;
 
 	current_node = get_closest_node(path_data, v[0].x);
-//print_path_data(path_data, v[0].x);
-//ft_printf("Current_node = %d\n\n", current_node);
 	if (current_node == 1)
 		return (1);
 	if (current_node < 0)

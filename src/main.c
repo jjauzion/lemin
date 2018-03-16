@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/12 15:16:12 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 19:07:17 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 **
 **	**adj_list:
 **	[i] -> pointer to list of all nodes connected to node i (with i = node id)
-**	e.g.:
-**	[0] -> [2 | next] -> [1 | next] -> NULL (node 1 and 2 are connected to node 0)
-**	[n] -> NULL (no node connected to node n)
+**	[0] -> pointer to list of all nodes connected to START node
+**	[1]	-> pointer to list of all nodes connected to END node
+**	[n] -> pointer to list of all nodes connected to last node (with n = nb of vertex - 1)
 **
 **	**path:
 **	[i][0]		= lenght (l) of path i (l = nb of nodes on the path - 1)

@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:25:46 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 17:48:43 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/16 20:11:00 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static void	get_ants_outof_start(int **path, int nb_of_path, t_vertex *vertex)
 	while (vertex[1].ant > 0 && ++i < nb_of_path)
 	{
 		ant_id = vertex[0].y - vertex[1].ant + 1;
+//ft_printf("ant at start = %d ; c0 = %d ; c%d = %d\n", vertex[1].ant, path[0][0], i, path[i][0]);
 		if (vertex[1].ant > (path[i][0] - path[0][0]))
 		{
 			vertex[path[i][2] + 1].ant = ant_id;
