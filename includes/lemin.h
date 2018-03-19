@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 18:45:22 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/19 12:25:18 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void				print_path(int **path, t_vertex *vertex);
 void				print_maze(char *str);
 int					remove_start_link(int link_id, t_clist **list);
 t_clist				**copy_adj_list(t_clist **list, int size);
+int					find_best_solution(t_sol *sol, int nb_of_ant);
 
 #endif

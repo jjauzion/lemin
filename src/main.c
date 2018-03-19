@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 19:07:17 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/19 14:18:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		main(void)
 		ft_printf("ERROR: No path found\n");
 		return (1);
 	}
+//print_path(path, vertex);
 	run_ants_run(path, nb_of_path, vertex);
 	free_adj_list(&adj_list, vertex[0].x);
 	free_int_matrix(&path, nb_of_path);

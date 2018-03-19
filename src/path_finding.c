@@ -6,33 +6,53 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 18:17:03 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 20:10:36 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/19 15:09:59 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
+static int			sort_path(int **path, int nb_of_path, int path_length)
+{
+	int	i;
+	int	position;
+
+	position = 0;
+	while (position < nb_of_path - 1 && path_length > path[position][0])
+		position++;
+	i = nb_of_path - 1;
+	while (i > position)
+	{
+		path[i] = path[i - 1];
+		i--;
+	}
+	return (position);
+}
+
 static int			add_path(int **path, int nb_of_path, int **path_data)
 {
 	int	i;
 	int	preceding;
+	int	position;
 
 /*	if (nb_of_path > PATH_DEF_NB)
 		realloc_path(path, nb_of_path);*/
-	if (!(path[nb_of_path - 1] = (int*)malloc(sizeof(int) * (path_data[0][1] + 2))))
-		return (1);
 	i = path_data[0][1];
-	path[nb_of_path - 1][0] = i;
-	path[nb_of_path - 1][i + 1] = 1;
+	position = sort_path(path, nb_of_path, i);
+//	position = nb_of_path - 1;
+	if (!(path[position] = (int*)malloc(sizeof(int) * (path_data[0][1] + 2))))
+		return (-1);
+	path[position][0] = i;
+	path[position][i + 1] = 1;
 	preceding = path_data[2][1];
 	while (i > 0)
 	{
-		path[nb_of_path - 1][i] = preceding;
+		path[position][i] = preceding;
 		preceding = path_data[2][preceding];
 		i--;
 	}
 	path[nb_of_path] = NULL;
-	return (0);
+	return (position);
 }
 
 static void	remove_path_from_graph(int *path, t_clist **adj_list, int nb_vertex)
@@ -102,7 +122,7 @@ static int	copy_path(int **dest, int **src, int nb_of_path)
 **	[2][i] : preceding vertex of vertex i
 **
 **	soltuion:
-**	sol[i].path			= list of path for solution i
+**	sol[i].path			= path matrix for solution i
 **	sol[i].nb_of_path	= nb of path for solution i
 **	sol[n].nb_of_path	= -1 with n = nb of link on the start node
 */
@@ -115,12 +135,12 @@ int			path_finding(int **path, t_vertex *vertex, t_clist **adj_list)
 	t_clist	**tmp_list;
 	int		i;
 	int		link;
-	int		*tmp;
+	int		position;
 
 	nb_sol = get_nb_elm(adj_list[0]);
 	solution = init_solution(nb_sol);
 	path_data = init_path_data_tab(vertex[0].x);
-	if (!path_data || !solution)
+	if (!path_data || !solution || nb_sol == 0)
 		return (0);
 	i = -1;
 	while (++i < nb_sol)
@@ -132,9 +152,9 @@ int			path_finding(int **path, t_vertex *vertex, t_clist **adj_list)
 		while (djikstra(path_data, vertex, tmp_list) > 0)
 		{
 			solution[i].nb_of_path++;
-			if (add_path(solution[i].path, solution[i].nb_of_path, path_data))
+			if ((position = add_path(solution[i].path, solution[i].nb_of_path, path_data)) < 0)
 				return (0);
-			remove_path_from_graph(solution[i].path[solution[i].nb_of_path - 1], tmp_list, vertex[0].x);
+			remove_path_from_graph(solution[i].path[position], tmp_list, vertex[0].x);
 			reinit_path_data(path_data, vertex[0].x);
 		}
 		reinit_path_data(path_data, vertex[0].x);
@@ -142,21 +162,20 @@ int			path_finding(int **path, t_vertex *vertex, t_clist **adj_list)
 		if (djikstra(path_data, vertex, tmp_list) > 0)
 		{
 			solution[i].nb_of_path++;
-			if (add_path(solution[i].path, solution[i].nb_of_path, path_data))
+			if (add_path(solution[i].path, solution[i].nb_of_path, path_data) < 0)
 				return (0);
-		}
-		if (solution[i].path[solution[i].nb_of_path - 1][0] < solution[i].path[0][0])
-		{
-			tmp = solution[i].path[0];
-			solution[i].path[0] = solution[i].path[solution[i].nb_of_path - 1];
-			solution[i].path[solution[i].nb_of_path - 1] = tmp;
 		}
 		reinit_path_data(path_data, vertex[0].x);
 		free_adj_list(&tmp_list, vertex[0].x);
 	}
-//	i = find_best_solution(solution, nb_of_ant);
-	i = 0;
-	if (copy_path(path, solution[i].path, solution[i].nb_of_path))
+/*i = -1;
+while (++i < nb_sol)
+{
+	ft_printf("FINAL --> sol %d :\n", i);
+	print_path(solution[i].path, vertex);
+}*/
+	i = find_best_solution(solution, vertex[0].y);
+	if (i < 0 || copy_path(path, solution[i].path, solution[i].nb_of_path))
 		return (0);
 	i = solution[i].nb_of_path;
 	free_solution(&solution);
