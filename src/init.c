@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:40:22 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 12:52:40 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:19:57 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ t_vertex	*init_vertex(int size)
 	t_vertex	*vertex;
 	int			i;
 
+	if (size < 2)
+	{
+		ft_putstr("Error: Initialize shall be done with at least 2 vertices\n");
+		return (NULL);
+	}
 	if (!(vertex = (t_vertex*)malloc(sizeof(t_vertex) * (size + 1))))
 		return (NULL);
 	i = -1;
@@ -75,13 +80,16 @@ t_sol		*init_solution(int size)
 {
 	t_sol	*solution;
 
+	if (size <= 0)
+		return (NULL);
 	if (!(solution = (t_sol*)malloc(sizeof(t_sol) * (size + 1))))
 		return (NULL);
 	solution[size].path = NULL;
 	solution[size].nb_of_path = -1;
 	while (--size >= 0)
 	{
-		if (!(solution[size].path = (int**)malloc(sizeof(int*) * (PATH_DEF_NB + 1))))
+		if (!(solution[size].path =
+					(int**)malloc(sizeof(int*) * (PATH_DEF_NB + 1))))
 			return (NULL);
 		solution[size].nb_of_path = 0;
 	}

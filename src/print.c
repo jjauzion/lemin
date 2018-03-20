@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 12:31:50 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/11 17:35:36 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 12:24:32 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ static char	*join(char const *s1, char const *s2)
 
 	if (!s2)
 		return (NULL);
-	if (!s1)
-		len1 = 0;
-	else
-		len1 = ft_strlen(s1);
+	len1 = (!s1) ? 0 : ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	if (!(ret = (char *)malloc(sizeof(char) * (len1 + len2 + 2))))
 		return (NULL);
@@ -88,7 +85,8 @@ void		print_path_data(int **path_data, int size)
 	ft_printf(" i : %11s | ? | pre |\n", "dist2node");
 	i = -1;
 	while (++i < size)
-		ft_printf("%3d: %11d | %d | %3d |\n", i, path_data[0][i], path_data[1][i], path_data[2][i]);
+		ft_printf("%3d: %11d | %d | %3d |\n", i,
+				path_data[0][i], path_data[1][i], path_data[2][i]);
 }
 
 void		print_path(int **path, t_vertex *vertex)

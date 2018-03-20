@@ -6,11 +6,22 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:31:47 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/19 14:18:44 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:22:35 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+static int	check_parse(t_vertex *vertex, t_clist **adj_list)
+{
+	if (vertex[0].y < 0 || vertex[1].name == NULL ||
+			vertex[2].name == NULL || !adj_list)
+	{
+		ft_printf("ERROR\n");
+		return (1);
+	}
+	return (0);
+}
 
 /*
 **	*vertex:
@@ -29,7 +40,8 @@
 **	[i] -> pointer to list of all nodes connected to node i (with i = node id)
 **	[0] -> pointer to list of all nodes connected to START node
 **	[1]	-> pointer to list of all nodes connected to END node
-**	[n] -> pointer to list of all nodes connected to last node (with n = nb of vertex - 1)
+**	[n] -> pointer to list of all nodes connected to last node
+**			(with n = nb of vertex - 1)
 **
 **	**path:
 **	[i][0]		= lenght (l) of path i (l = nb of nodes on the path - 1)
@@ -38,19 +50,16 @@
 **	[i][l + 1]	= end node
 */
 
-int		main(void)
+int			main(void)
 {
 	t_vertex	*vertex;
 	t_clist		**adj_list;
 	int			**path;
 	int			nb_of_path;
 
-	parse(&vertex, &adj_list);
-	if (vertex[0].y < 0 || vertex[1].name == NULL || vertex[2].name == NULL || !adj_list)
-	{
-		ft_printf("ERROR\n");
+	adj_list = NULL;
+	if (parse(&vertex, &adj_list) || check_parse(vertex, adj_list))
 		return (1);
-	}
 	if (!(path = (int**)malloc(sizeof(int*) * (PATH_DEF_NB + 1))))
 		return (1);
 	print_maze(NULL);
@@ -59,7 +68,6 @@ int		main(void)
 		ft_printf("ERROR: No path found\n");
 		return (1);
 	}
-//print_path(path, vertex);
 	run_ants_run(path, nb_of_path, vertex);
 	free_adj_list(&adj_list, vertex[0].x);
 	free_int_matrix(&path, nb_of_path);

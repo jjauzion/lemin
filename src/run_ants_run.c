@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/10 19:25:46 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/19 11:52:19 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 12:21:44 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ static void	move_ants(int **path, int nb_of_path, t_vertex *vertex)
 			{
 				vertex[node + 1].ant = 0;
 				node = path[i][j + 1];
-				vertex[node + 1].ant = (node + 1 == 2) ? 1 + vertex[node + 1].ant : ant;
+				if (node + 1 == 2)
+					vertex[node + 1].ant = 1 + vertex[node + 1].ant;
+				else
+					vertex[node + 1].ant = ant;
 				ft_printf("L%d-%s ", ant, vertex[node + 1].name);
 			}
 			j--;
-		}	
+		}
 	}
 }
 

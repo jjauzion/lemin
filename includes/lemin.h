@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/19 12:25:18 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:25:57 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # define OPT_START 1
 # define OPT_END 2
 # define OPT_LINK 3
-# define PATH_DEF_NB 100
-# define VERTEX_DEF_NB 1000
+# define PATH_DEF_NB 500
+# define VERTEX_DEF_NB 5000
 
 typedef struct 				s_vertex
 {
@@ -69,5 +69,10 @@ void				print_maze(char *str);
 int					remove_start_link(int link_id, t_clist **list);
 t_clist				**copy_adj_list(t_clist **list, int size);
 int					find_best_solution(t_sol *sol, int nb_of_ant);
+int					copy_path(int **dest, int **src, int nb_of_path);
+void				reinit_path_data(int **path_data, int size);
+void				remove_path_from_graph(int *path, t_clist **adj_list, int nb_vertex);
+int					add_path(int **path, int nb_of_path, int **path_data);
+int					sort_path(int **path, int nb_of_path, int path_length);
 
 #endif

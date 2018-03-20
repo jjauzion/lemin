@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 12:17:46 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 17:21:56 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,10 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 	char	*line;
 	int		option;
 
-	*adj_list = NULL;
 	if (!(*vertex = init_vertex(VERTEX_DEF_NB)))
 		return (1);
 	option = 0;
-	while((ret = get_next_line(0, &line)) > 0)
+	while ((ret = get_next_line(0, &line)) > 0)
 	{
 		if ((line[0] != '#' || line[1] == '#') && line[0] != '\0')
 		{
@@ -91,7 +90,7 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 		}
 		ft_strdel(&line);
 		if (option < 0)
-			return (1);
+			return (0);
 	}
 	ft_strdel(&line);
 	return (0);

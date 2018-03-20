@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/16 10:49:18 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 18:21:27 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/20 13:56:39 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ int			remove_start_link(int link_id, t_clist **list)
 	}
 	i = 0;
 	while (++i < link_id)
-	{
-		ptr1 = ptr2;
-		ptr2 = ptr2->next;
-	}
+		ptr1 = ptr1->next;
+	ptr2 = ptr1->next;
 	del_link = ptr2->nb;
 	ptr1->next = ptr2->next;
 	free(ptr2);

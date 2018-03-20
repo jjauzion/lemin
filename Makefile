@@ -6,7 +6,7 @@
 #    By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/08 11:25:23 by jjauzion          #+#    #+#              #
-#    Updated: 2018/03/19 12:24:44 by jjauzion         ###   ########.fr        #
+#    Updated: 2018/03/20 16:19:42 by jjauzion         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ SRC_NAME1 = main.c \
 			add_vertex.c \
 			free.c \
 			list_fct.c \
+			list_fct2.c \
 			path_finding.c \
+			path_fct.c \
 			djikstra.c \
 			print.c \
 			run_ants_run.c \
