@@ -1,0 +1,33 @@
+100
+##start
+start 0 0
+##end
+end 1 1
+m1 0 0
+m2 0 0
+m3 0 0
+t0 0 0
+t1 0 0
+t2 0 0
+t3 0 0
+t4 0 0
+b1 0 0
+b2 0 0
+b3 0 0
+b4 0 0
+start-m1
+start-b1
+start-t0
+m1-m2
+m2-m3
+m3-end
+b1-b2
+b2-b3
+b3-b4
+b4-m3
+m1-t1
+t0-t1
+t1-t2
+t2-t3
+t3-t4
+t4-end

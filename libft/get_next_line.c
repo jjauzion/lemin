@@ -6,7 +6,7 @@
 /*   By: jjauzion <jjauzion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:23:51 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/16 12:15:45 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/21 10:15:30 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,6 @@ int				get_next_line(const int fd, char **line)
 	if ((status = ft_read(&str, f, &len)) == ERROR || (!*str && status == EOFF))
 	{
 		*line = str;
-		free(f->buff);	//BOUUUU SALE !
-		free(f);		//BOUUU sale !
 		if (status == ERROR)
 			return (ERROR);
 		return (EOFF);

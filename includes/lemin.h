@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 11:45:12 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/20 17:25:57 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/21 10:20:10 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,25 @@
 # define PATH_DEF_NB 500
 # define VERTEX_DEF_NB 5000
 
-typedef struct 				s_vertex
+typedef struct		s_vertex
 {
 	char			*name;
 	int				x;
 	int				y;
 	int				ant;
-}							t_vertex;
+}					t_vertex;
 
-typedef struct				s_clist
+typedef struct		s_clist
 {
 	int				nb;
-	struct s_clist	*next;	
-}							t_clist;
+	struct s_clist	*next;
+}					t_clist;
 
-typedef struct				s_solution
+typedef struct		s_solution
 {
 	int				**path;
 	int				nb_of_path;
-}							t_sol;
+}					t_sol;
 
 t_vertex			*init_vertex(int size);
 t_clist				**init_adj_list(int size);
@@ -59,7 +59,8 @@ void				free_list(t_clist **list);
 void				remove_elm(t_clist **list, int data);
 int					get_nb_elm(t_clist *list);
 t_clist				*copy_list(t_clist *list);
-int					path_finding(int **path, t_vertex *vertex, t_clist **adj_list);
+int					path_finding(int **path, t_vertex *vertex,
+		t_clist **adj_list);
 int					djikstra(int **path_data, t_vertex *v, t_clist **adj_list);
 void				run_ants_run(int **path, int nb_of_path, t_vertex *vertex);
 void				print_adj_list(t_clist **list, int size);
@@ -71,7 +72,8 @@ t_clist				**copy_adj_list(t_clist **list, int size);
 int					find_best_solution(t_sol *sol, int nb_of_ant);
 int					copy_path(int **dest, int **src, int nb_of_path);
 void				reinit_path_data(int **path_data, int size);
-void				remove_path_from_graph(int *path, t_clist **adj_list, int nb_vertex);
+void				remove_path_from_graph(int *path, t_clist **adj_list,
+		int nb_vertex);
 int					add_path(int **path, int nb_of_path, int **path_data);
 int					sort_path(int **path, int nb_of_path, int path_length);
 

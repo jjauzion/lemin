@@ -1,19 +1,19 @@
-11
 ##start
 start 0 0
 ##end
 end 1 1
 m1 0 0
-m2 0 0
 t1 0 0
 t2 0 0
-t3 0 0
-t4 0 0
+b1 0 0
+b2 0 0
+b3 0 0
 start-m1
 start-t1
-m1-m2
-m2-end
+start-b1
+m1-end
 t1-t2
-t2-t3
-t3-t4
-t4-end
+t2-end
+b1-b2
+b2-b3
+b3-end

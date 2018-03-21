@@ -1,0 +1,14 @@
+##start
+A 2 1
+##end
+D 3 4
+B 1 1
+C 2 2
+E 3 3
+#com inutile
+A-B
+#autre com inutile
+B-C
+C-D
+A-E
+E-D
