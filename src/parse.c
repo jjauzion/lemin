@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/20 17:21:56 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/22 12:56:25 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,9 @@ int				parse(t_vertex **vertex, t_clist ***adj_list)
 			else
 			{
 				option = parse_line(line, vertex, adj_list, option);
-				print_maze(line);
 			}
 		}
+		print_maze(line);
 		ft_strdel(&line);
 		if (option < 0)
 			return (0);
