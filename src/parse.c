@@ -6,7 +6,7 @@
 /*   By: jjauzion <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 12:24:01 by jjauzion          #+#    #+#             */
-/*   Updated: 2018/03/22 12:56:25 by jjauzion         ###   ########.fr       */
+/*   Updated: 2018/03/23 12:00:55 by jjauzion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,9 @@
 static int		read_cmd(char *line, int option)
 {
 	if (ft_strequ(line, "##start"))
-	{
-		print_maze("##start");
 		option = OPT_START;
-	}
 	else if (ft_strequ(line, "##end"))
-	{
-		print_maze("##end");
 		option = OPT_END;
-	}
 	return (option);
 }
 
